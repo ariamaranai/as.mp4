@@ -6,18 +6,16 @@ chrome.downloads.onCreated.addListener(item => {
     let src = item.url;
     if (src[0] == "f") {
       let { id } = item;
-      chrome.downloads.pause(id);
+      chrome.downloads.cancel(id);
+      chrome.downloads.erase({ id });
       let ext = src.slice(-4).toLowerCase();
       ext == ".mov" || ext == ".m4v"
-        ? (
-          chrome.downloads.cancel(item.id),
-          chrome.storage.local.get("0", v =>
-            chrome.tabs.create({
+        ? chrome.storage.local.get("0", v =>
+            chrome.tabs.update({
               url: (v[0] || "as.mp4.htm?") + src
             })
           )
-        )
         : chrome.downloads.resume(id)
-    } 
+    }
   }
 });
