@@ -9,13 +9,12 @@ chrome.downloads.onCreated.addListener(item => {
       chrome.downloads.cancel(id);
       chrome.downloads.erase({ id });
       let ext = src.slice(-4).toLowerCase();
-      ext == ".mov" || ext == ".m4v"
-        ? chrome.storage.local.get("0", v =>
-            chrome.tabs.update({
-              url: (v[0] || "as.mp4.htm?") + src
-            })
-          )
-        : chrome.downloads.resume(id)
+      ext == ".mov" || ext == ".m4v" &&
+      chrome.storage.local.get("0", v =>
+        chrome.tabs.update({
+          url: (v[0] || "as.mp4.htm?") + src
+        })
+      );
     }
   }
 });
