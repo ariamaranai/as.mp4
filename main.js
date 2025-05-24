@@ -1,0 +1,1 @@
+v.src = location.search.slice(1);
