@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "as.mp4",
   "version": "0",
-  "description": "Treat .mov and .m4v files as .mp4",
+  "description": "Support playback of .mov and .m4v files",
   "icons": {
     "128": "128.png"
   },
