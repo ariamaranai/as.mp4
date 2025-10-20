@@ -6,12 +6,8 @@
   "icons": {
     "128": "128.png"
   },
-  "omnibox": {
-    "keyword": "as.mp4"
-  },
   "permissions": [
-    "downloads",
-    "storage"
+    "downloads"
   ],
   "host_permissions": [
     "<all_urls>"
