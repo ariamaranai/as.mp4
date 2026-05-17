@@ -16,4 +16,5 @@ chrome.downloads.onCreated.addListener(item => {
       chrome.tabs.update({ url: "as.mp4.htm?" + finalUrl });
     }
   }
+  return 0;
 });
