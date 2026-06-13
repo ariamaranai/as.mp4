@@ -1,8 +1,7 @@
-chrome.downloads.onCreated.addListener(item => {
+chrome.downloads.onCreated.addListener((item, c) => {
   if (!item.byExtensionId) {
     let { finalUrl } = item;
     let len = finalUrl.length;
-    let c;
     if (
       finalUrl[0] == "f" &&
       (c = finalUrl[--len]) == "." &&
