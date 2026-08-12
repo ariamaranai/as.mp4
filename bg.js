@@ -3,11 +3,10 @@ chrome.downloads.onCreated.addListener((item, c) => {
     let { finalUrl } = item;
     let len = finalUrl.length;
     if (
-      finalUrl[0] == "f" &&
-      (c = finalUrl[--len]) == "." &&
-      ((c = finalUrl[--len]) == "m" || c == "M") &&
+      ((c = finalUrl[--len]) == "v" || c == "V") &&
       ((c = finalUrl[--len]) == "4" || c == "o" || c == "O") &&
-      ((c == finalUrl[--len]) == "v" || c == "V")
+      ((c = finalUrl[--len]) == "m" || c == "M") &&
+      (c = finalUrl[--len]) == "."
     ) {
       let { id } = item;
       chrome.downloads.cancel(id);
