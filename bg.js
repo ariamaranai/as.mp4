@@ -1,5 +1,5 @@
 chrome.downloads.onCreated.addListener((item, c) => {
-  if (!item.byExtensionId) {
+  if (item.referrer && !item.byExtensionId) {
     let { finalUrl } = item;
     let len = finalUrl.length;
     if (
