@@ -1,17 +1,19 @@
-chrome.downloads.onCreated.addListener((item, c) => {
+chrome.downloads.onCreated.addListener(item => {
   if (item.referrer && !item.byExtensionId) {
     let { finalUrl } = item;
     let len = finalUrl.length;
+    let c = finalUrl[--len];
     if (
-      ((c = finalUrl[--len]) == "v" || c == "V") &&
+      (c == "v" || c == "V") &&
       ((c = finalUrl[--len]) == "4" || c == "o" || c == "O") &&
       ((c = finalUrl[--len]) == "m" || c == "M") &&
       (c = finalUrl[--len]) == "."
     ) {
       let { id } = item;
-      chrome.downloads.cancel(id);
-      chrome.downloads.erase({ id });
-      chrome.tabs.update({ url: "as.mp4.htm?" + finalUrl });
+      let { downloads, tabs } = chrome;
+      downloads.cancel(id);
+      downloads.erase({ id });
+      tabs.update({ url: "as.mp4.htm?" + finalUrl });
     }
   }
 });
