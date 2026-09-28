@@ -1,9 +1,9 @@
 {
   let { downloads, tabs } = chrome;
   downloads.onCreated.addListener(item => {
-    if (!item.referrer || item.byExtensionId)
-      return;
     let { finalUrl } = item;
+    if (finalUrl[0] === "h" && (!item.referrer || item.byExtensionId))
+      return;
     let len = finalUrl.length;
     let c = finalUrl[--len];
     return (c === "v" || c === "V") &&
